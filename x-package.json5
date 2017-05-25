@@ -1,37 +1,35 @@
 {
-    name: 'diff-renderer',
-    version: '0.1.1',
-    description: 'Render diff to the dom.',
-    keywords: ['diff', 'renderer', 'dom', 'virtual dom', 'react', 'binding'],
-    author: {
-        name: 'Oleg Slobodskoi',
-        email: 'oleg008@gmail.com'
+  name: 'diff-renderer',
+  version: '0.1.1',
+  description: 'Render diff to the dom.',
+  keywords: ['diff', 'renderer', 'dom', 'virtual dom', 'react', 'binding'],
+  author: {
+    name: 'Oleg Slobodskoi',
+    email: 'oleg008@gmail.com'
+  },
+  repository: {
+    type: 'git',
+    url: 'git@github.com:kof/diff-renderer.git'
+  },
+  licenses: [{
+    type: 'MIT',
+    url: 'http://www.opensource.org/licenses/mit-license.php'
+  }],
+  overlay: {
+    npm: {
+      devDependencies: {
+        bench: '^0.3.6',
+        browserify: '^14.3.0',
+        'html-minifier': '^3.5.1',
+        htmltree: '0.0.4',
+        qunit: '^1.0.0',
+        qunitjs: '^2.3.2'
+      },
+      dependencies: {
+        docdiff: '0.0.1',
+      }
     },
-    repository: {
-        type: 'git',
-        url: 'git@github.com:kof/diff-renderer.git'
-    },
-    licenses: [
-        {
-           type: 'MIT',
-           url: 'http://www.opensource.org/licenses/mit-license.php'
-        }
-    ],
-    overlay: {
-        npm: {
-            devDependencies: {
-                bench: '~0.3.5',
-                browserify: '~3.24.13',
-                'html-minifier': '~0.5.5',
-                htmltree: '~0.0.4',
-                qunitjs: '~1.14.0',
-                qunit: '~0.7.2'
-            },
-            dependencies: {
-                docdiff: '0.0.1'
-            }
-        },
-        bower: true,
-        component: true
-    }
+    bower: true,
+    component: true
+  }
 }

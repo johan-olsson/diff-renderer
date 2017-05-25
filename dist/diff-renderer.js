@@ -1,7 +1,7 @@
-!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.DiffRenderer=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
-module.exports = _dereq_('./lib/renderer')
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.DiffRenderer = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+module.exports = require('./lib/renderer')
 
-},{"./lib/renderer":9}],2:[function(_dereq_,module,exports){
+},{"./lib/renderer":9}],2:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -42,7 +42,7 @@ function adler32(data) {
 
 module.exports = adler32;
 
-},{}],3:[function(_dereq_,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict'
 
 /**
@@ -91,10 +91,10 @@ ElementsPool.prototype.createElement = function(name) {
     return name == '#text' ? document.createTextNode('') : document.createElement(name)
 }
 
-},{}],4:[function(_dereq_,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict'
 
-var adler32 = _dereq_('./adler32')
+var adler32 = require('./adler32')
 
 /**
  * Add hashes to every node.
@@ -134,7 +134,7 @@ module.exports = function hashify(node) {
     return str
 }
 
-},{"./adler32":2}],5:[function(_dereq_,module,exports){
+},{"./adler32":2}],5:[function(require,module,exports){
 'use strict'
 
 /**
@@ -166,11 +166,11 @@ module.exports = function(obj, path) {
     return obj
 }
 
-},{}],6:[function(_dereq_,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict'
 
-var keypath = _dereq_('./keypath')
-var Node = _dereq_('./node')
+var keypath = require('./keypath')
+var Node = require('./node')
 
 /**
  * Modifier applies changes to the node.
@@ -338,11 +338,11 @@ Modifier.prototype.name = function(change, prop) {
     node.setName(now)
 }
 
-},{"./keypath":5,"./node":7}],7:[function(_dereq_,module,exports){
+},{"./keypath":5,"./node":7}],7:[function(require,module,exports){
 'use strict'
 
-var ElementsPool = _dereq_('./elements-pool')
-var queue = _dereq_('./render-queue')
+var ElementsPool = require('./elements-pool')
+var queue = require('./render-queue')
 
 // Global elements pool for all nodes and all renderer instances.
 var pool = new ElementsPool()
@@ -740,7 +740,7 @@ Node.prototype.dirty = function(name, value) {
     }
 }
 
-},{"./elements-pool":3,"./render-queue":8}],8:[function(_dereq_,module,exports){
+},{"./elements-pool":3,"./render-queue":8}],8:[function(require,module,exports){
 'use strict'
 
 /**
@@ -772,17 +772,17 @@ queue.empty = function() {
 }
 
 
-},{}],9:[function(_dereq_,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict'
 
-var docdiff = _dereq_('docdiff')
-var keypath = _dereq_('./keypath')
-var Node = _dereq_('./node')
-var Modifier = _dereq_('./modifier')
-var serializeDom = _dereq_('./serialize-dom')
-var serializeHtml = _dereq_('./serialize-html')
-var renderQueue = _dereq_('./render-queue')
-var hashify = _dereq_('./hashify')
+var docdiff = require('docdiff')
+var keypath = require('./keypath')
+var Node = require('./node')
+var Modifier = require('./modifier')
+var serializeDom = require('./serialize-dom')
+var serializeHtml = require('./serialize-html')
+var renderQueue = require('./render-queue')
+var hashify = require('./hashify')
 
 /**
  * Renderer constructor.
@@ -884,7 +884,7 @@ Renderer.prototype.update = function(html) {
     return this
 }
 
-},{"./hashify":4,"./keypath":5,"./modifier":6,"./node":7,"./render-queue":8,"./serialize-dom":10,"./serialize-html":11,"docdiff":13}],10:[function(_dereq_,module,exports){
+},{"./hashify":4,"./keypath":5,"./modifier":6,"./node":7,"./render-queue":8,"./serialize-dom":10,"./serialize-html":11,"docdiff":13}],10:[function(require,module,exports){
 'use strict'
 
 /**
@@ -926,8 +926,27 @@ module.exports = function serialize(element) {
     return json
 }
 
-},{}],11:[function(_dereq_,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict'
+
+var selfClosingTags = [
+  'area',
+  'base',
+  'br',
+  'col',
+  'command',
+  'embed',
+  'hr',
+  'img',
+  'input',
+  'keygen',
+  'link',
+  'meta',
+  'param',
+  'source',
+  'track',
+  'wbr'
+]
 
 /**
  * Simplified html parser. The fastest one written in javascript.
@@ -940,135 +959,76 @@ module.exports = function serialize(element) {
  * @api private
  */
 module.exports = function serialize(str, parent) {
-    if (!parent) parent = {name: 'root'}
-    if (!str) return parent
+  parent = parent || {
+    children: [],
+    name: 'root'
+  }
 
-    var i = 0
-    var end = false
-    var added = false
-    var current
-    var isWhite, isSlash, isOpen, isClose
-    var inTag = false
-    var inTagName = false
-    var inAttrName = false
-    var inAttrValue = false
-    var inCloser = false
-    var inClosing = false
-    var isQuote, openQuote
-    var attrName, attrValue
-    var inText = false
+  var extractTag = (/^<(\/)?([a-z-]+)((?: [a-z:-]+="[^"]*")*)>$/)
+  var extractAttributes = (/[a-z]+="[^"]+"/g)
+  var string = ''
+  var node = parent
 
-    var json = {
-        parent: parent,
-        name: ''
-    }
+  str.split('').forEach(function (char) {
 
-    while (!end) {
-        current = str[i]
-        isWhite = current == ' ' || current == '\t' || current == '\r' || current == '\n'
-        isSlash = current == '/'
-        isOpen = current == '<'
-        isClose = current == '>'
-        isQuote = current == "'" || current == '"'
-        if (isSlash) inClosing = true
-        if (isClose) inCloser = false
+    switch (char) {
+      case '<': {
 
-        if (current == null) {
-            end = true
-        } else {
-            if (inTag) {
-                if (inCloser) {
-                    delete json.name
-                // Tag name
-                } else if (inTagName || !json.name) {
-                    inTagName = true
-                    if ((json.name && isWhite) || isSlash) {
-                        inTagName = false
-                        if (!json.name) {
-                            inCloser = true
-                            if (parent.parent) parent = parent.parent
-                        }
-                    } else if (isClose) {
-                        serialize(str.substr(i + 1), inClosing || inCloser ? parent : json)
-                        return parent
-                    } else if (!isWhite) {
-                        json.name += current
-                    }
-                // Attribute name
-                } else if (inAttrName || !attrName) {
-                    inAttrName = true
-                    if (attrName == null) attrName = ''
-                    if (isSlash ||
-                        (attrName && isWhite) ||
-                        (attrName && current == '=')) {
+        if (string) {
+          node.children.push({
+            name: '#text',
+            text: string,
+            parent: node
+          })
 
-                        inAttrName = false
-                        if (attrName) {
-                            if (!json.attributes) json.attributes = {}
-                            json.attributes[attrName] = ''
-                        }
-                    } else if (isClose) {
-                        serialize(str.substr(i + 1), inClosing || inCloser ? parent : json)
-                        return parent
-                    } else if (!isWhite) {
-                        attrName += current
-                    }
-                // Attribute value
-                } else if (inAttrValue || attrName) {
-                    if (attrValue == null) attrValue = ''
-
-                    if (isQuote) {
-                        if (inAttrValue) {
-                            if (current == openQuote) {
-                                if (attrValue) json.attributes[attrName] = attrValue
-                                inAttrValue = false
-                                attrName = attrValue = null
-                            } else {
-                                attrValue += current
-                            }
-                        } else {
-                            inAttrValue = true
-                            openQuote = current
-                        }
-                    } else if (inAttrValue) {
-                        attrValue += current
-                    }
-                }
-            } else if (isOpen) {
-                if (inText) {
-                    serialize(str.substr(i), parent)
-                    return parent
-                }
-                inTag = true
-            } else if (isSlash && !inAttrValue) {
-                end = true
-            } else {
-                inText = true
-                inTag = false
-                if (!json.name) json.name = '#text'
-                if (json.text == null) json.text = ''
-                json.text += current
-            }
-
-            if (json.name && !added) {
-                if (!parent.children) parent.children = {length: 0}
-                parent.children[parent.children.length] = json
-                parent.children.length++
-                added = true
-            }
+          string = ''
         }
 
-        if (isClose) inClosing = false
+        string += char
+        break
+      }
+      case '>': {
 
-        ++i
+        string += char
+        string.replace(extractTag, function (m, closeTag, name, attr) {
+
+          if (closeTag) node = node.parent
+          else {
+
+            var child = {
+              name: name,
+              children: [],
+              attributes: {},
+              parent: node
+            }
+
+            attr.replace(extractAttributes, function (attribute) {
+              var part = attribute.split('=')
+              child.attributes[part[0]] = part[1].substring(1, part[1].length - 1)
+            })
+
+            node.children.push(child)
+
+            if (selfClosingTags.indexOf(name) === -1) {
+              node = child
+            }
+          }
+
+          string = ''
+        })
+        break
+      }
+      default: string += char
     }
+  })
 
-    return parent
+  console.log(parent)
+  return parent
 }
 
-},{}],12:[function(_dereq_,module,exports){
+},{}],12:[function(require,module,exports){
 
-var utils = _dereq_('./utils');
+var utils = require('./utils');
 
 /**
  * Diff Arrays
@@ -1136,10 +1096,10 @@ module.exports = function (original, now) {
 
   return diff;
 };
-},{"./utils":14}],13:[function(_dereq_,module,exports){
+},{"./utils":14}],13:[function(require,module,exports){
 
-var arraydiff = _dereq_('./arraydiff');
-var utils = _dereq_('./utils');
+var arraydiff = require('./arraydiff');
+var utils = require('./utils');
 
 /**
  * DocDiff
@@ -1225,7 +1185,7 @@ function Change (path, key, change, type, now, original, added, removed) {
   }
 }
 
-},{"./arraydiff":12,"./utils":14}],14:[function(_dereq_,module,exports){
+},{"./arraydiff":12,"./utils":14}],14:[function(require,module,exports){
 
 /**
  * isObject
@@ -1237,6 +1197,5 @@ exports.isObject = function (arg) {
   return typeof arg === 'object' && arg !== null && !Array.isArray(arg);
 };
 
-},{}]},{},[1])
-(1)
+},{}]},{},[1])(1)
 });
